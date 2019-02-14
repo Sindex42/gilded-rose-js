@@ -41,8 +41,8 @@ describe('Shop', () => {
       {name: "Aged Brie", sellIn: 1, quality: 20},
       {name: "Sulfuras, Hand of Ragnaros", sellIn: 1, quality: 80},
       {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20},
-      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 20},
-      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 20}
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 48},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 47}
     ]
 
     let gildedRose = new Shop(items)
@@ -65,11 +65,11 @@ describe('Shop', () => {
     })
 
     test('SellIn <= 10, Backstage Passes increment quality by 2', () => {
-      expect(gildedRose.items[4].quality).toBe(22)
+      expect(gildedRose.items[4].quality).toBe(50)
     })
 
     test('SellIn <= 5, Backstage Passes increment by 3', () => {
-      expect(gildedRose.items[5].quality).toBe(23)
+      expect(gildedRose.items[5].quality).toBe(50)
     })
   })
 
@@ -110,8 +110,6 @@ describe('Shop', () => {
     let items = [
       {name: "Aged Brie", sellIn: 0, quality: 50},
       {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 50},
-      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 49},
-      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 48}
     ]
 
     let gildedRose = new Shop(items)
@@ -122,14 +120,6 @@ describe('Shop', () => {
     })
 
     test('Backstage Passes', () => {
-      expect(gildedRose.items[1].quality).toBe(50)
-    })
-
-    test('SellIn <= 10, Backstage Passes', () => {
-      expect(gildedRose.items[1].quality).toBe(50)
-    })
-
-    test('SellIn <= 5, Backstage Passes', () => {
       expect(gildedRose.items[1].quality).toBe(50)
     })
   })
