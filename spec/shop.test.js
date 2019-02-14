@@ -2,6 +2,11 @@ const Item = require('../src/item')
 const Shop = require('../src/shop')
 
 describe('Shop', () => {
+  test('has an items property', () => {
+    let gildedRose = new Shop()
+    expect(gildedRose.items).toEqual([])
+  })
+
   describe('sellIn', () => {
     let items = [
       {name: "Sword", sellIn: 1, quality: 20},
