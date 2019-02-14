@@ -2,13 +2,12 @@ const Item = require('../src/item')
 const Shop = require('../src/shop')
 
 describe('Shop', () => {
-
   describe('sellIn', () => {
     let items = [
       {name: "Sword", sellIn: 1, quality: 20},
       {name: "Aged Brie", sellIn: 0, quality: 20},
       {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
-      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20}
     ]
 
     let gildedRose = new Shop(items)
@@ -75,7 +74,7 @@ describe('Shop', () => {
       {name: "Aged Brie", sellIn: 0, quality: 20},
       {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
       {name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 50},
-      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20}
     ]
 
     let gildedRose = new Shop(items)
@@ -99,6 +98,34 @@ describe('Shop', () => {
 
     test('Backstage Passes quality is 0', () => {
       expect(gildedRose.items[4].quality).toBe(0)
+    })
+  })
+
+  describe('Quality cannot increase past 50', () => {
+    let items = [
+      {name: "Aged Brie", sellIn: 0, quality: 50},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 50},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 49},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 48}
+    ]
+
+    let gildedRose = new Shop(items)
+    gildedRose.updateQuality()
+
+    test('Aged Brie', () => {
+      expect(gildedRose.items[0].quality).toBe(50)
+    })
+
+    test('Backstage Passes', () => {
+      expect(gildedRose.items[1].quality).toBe(50)
+    })
+
+    test('SellIn <= 10, Backstage Passes', () => {
+      expect(gildedRose.items[1].quality).toBe(50)
+    })
+
+    test('SellIn <= 5, Backstage Passes', () => {
+      expect(gildedRose.items[1].quality).toBe(50)
     })
   })
 })
