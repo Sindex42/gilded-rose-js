@@ -2,7 +2,7 @@ const Item = require('../src/item')
 const Shop = require('../src/shop')
 
 describe('Shop', () => {
-  describe('sellIn is positive', () => {
+  describe('sellIn is greater than 0', () => {
     let items = [
       {name: "Sword", sellIn: 1, quality: 20},
       {name: "Aged Brie", sellIn: 1, quality: 20},
@@ -43,9 +43,9 @@ describe('Shop', () => {
   describe('sellIn is 0 or less ', () => {
     let items = [
       {name: "Sword", sellIn: 0, quality: 20},
-      {name: "Aged Brie", sellIn: 0, quality: 0},
+      {name: "Aged Brie", sellIn: 0, quality: 20},
       {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
-      {name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80},
+      {name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 50},
       {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 20},
     ]
 
@@ -54,6 +54,22 @@ describe('Shop', () => {
 
     test('Regular items decrement quality by 2', () => {
       expect(gildedRose.items[0].quality).toBe(18)
+    })
+
+    test('Aged Brie increments quality by 2', () => {
+      expect(gildedRose.items[1].quality).toBe(22)
+    })
+
+    test("SellIn = 0, Sulfuras' quality does not change", () => {
+      expect(gildedRose.items[2].quality).toBe(80)
+    })
+
+    test("SellIn = -1, Sulfuras' quality does not change", () => {
+      expect(gildedRose.items[3].quality).toBe(50)
+    })
+
+    test('Backstage Passes quality is 0', () => {
+      expect(gildedRose.items[4].quality).toBe(0)
     })
   })
 })
