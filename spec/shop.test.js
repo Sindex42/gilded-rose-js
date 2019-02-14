@@ -2,6 +2,35 @@ const Item = require('../src/item')
 const Shop = require('../src/shop')
 
 describe('Shop', () => {
+
+  describe('sellIn', () => {
+    let items = [
+      {name: "Sword", sellIn: 1, quality: 20},
+      {name: "Aged Brie", sellIn: 0, quality: 20},
+      {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
+      {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20},
+    ]
+
+    let gildedRose = new Shop(items)
+    gildedRose.updateQuality()
+
+    test('Regular items decrement by 1', () => {
+      expect(gildedRose.items[0].sellIn).toBe(0)
+    })
+
+    test('Aged Brie decrements by 1', () => {
+      expect(gildedRose.items[1].sellIn).toBe(-1)
+    })
+
+    test("Sulfuras does not change", () => {
+      expect(gildedRose.items[2].sellIn).toBe(0)
+    })
+
+    test('Backstage Passes decrement by 1', () => {
+      expect(gildedRose.items[3].sellIn).toBe(14)
+    })
+  })
+
   describe('sellIn is greater than 0', () => {
     let items = [
       {name: "Sword", sellIn: 1, quality: 20},
@@ -23,7 +52,7 @@ describe('Shop', () => {
       expect(gildedRose.items[1].quality).toBe(21)
     })
 
-    test("Sulfuras' quality does not change", () => {
+    test("Sulfuras does not quality change", () => {
       expect(gildedRose.items[2].quality).toBe(80)
     })
 
@@ -35,7 +64,7 @@ describe('Shop', () => {
       expect(gildedRose.items[4].quality).toBe(22)
     })
 
-    test('SellIn <= 5, Backstage Passes increment quality by 3', () => {
+    test('SellIn <= 5, Backstage Passes increment by 3', () => {
       expect(gildedRose.items[5].quality).toBe(23)
     })
   })
