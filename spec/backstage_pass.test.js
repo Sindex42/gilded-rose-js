@@ -6,6 +6,7 @@ describe('Backstage Passes', () => {
   let passes3 = new BackstagePass("Backstage passes to a TAFKAL80ETC concert", 4, 20)
   let passes4 = new BackstagePass("Backstage passes to a TAFKAL80ETC concert", -1, 50)
   let passes5 = new BackstagePass("Backstage passes to a TAFKAL80ETC concert", 1, 50)
+  let passes6 = new BackstagePass("Backstage passes to a TAFKAL80ETC concert", -1, 0)
 
   describe('#updateQuality', () => {
     test('if sellIn > 10, increment quality by 1', () => {
@@ -31,6 +32,11 @@ describe('Backstage Passes', () => {
     test('quality cannot increase past 50', () => {
       passes5.updateQuality()
       expect(passes5.quality).toBe(50)
+    })
+
+    test('quality cannot decrease below 0', () => {
+      passes6.updateQuality()
+      expect(passes6.quality).toBe(0)
     })
   })
 })

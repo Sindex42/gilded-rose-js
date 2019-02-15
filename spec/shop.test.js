@@ -123,5 +123,23 @@ describe('Shop', () => {
         expect(gildedRose.items[1].quality).toBe(50)
       })
     })
+
+    describe('Quality cannot decrease below 0', () => {
+      let items = [
+        {name: "Sword", sellIn: -1, quality: 0},
+        {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0},
+      ]
+
+      let gildedRose = new Shop(items)
+      gildedRose.updateQuality()
+
+      test('Regular items', () => {
+        expect(gildedRose.items[0].quality).toBe(0)
+      })
+
+      test('Backstage Passes', () => {
+        expect(gildedRose.items[1].quality).toBe(0)
+      })
+    })
   })
 })
