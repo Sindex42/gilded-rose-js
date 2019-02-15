@@ -1,4 +1,3 @@
-const Item = require('../src/item')
 const Shop = require('../src/shop')
 
 describe('Shop', () => {
