@@ -1,3 +1,7 @@
+const AgedBrie = require('../src/aged_brie')
+const BackstagePass = require('../src/backstage_pass')
+const Regular = require('../src/regular_item')
+
 class Shop {
   constructor (items = []) {
     this.items = items
@@ -6,27 +10,28 @@ class Shop {
   updateQuality () {
     this.items.forEach((item) => {
       if (item.name === 'Sulfuras, Hand of Ragnaros') { return }
-
       item.sellIn = item.sellIn - 1
 
       if (item.name === 'Aged Brie') {
-        item.sellIn < 0 ? item.quality += 2 : item.quality += 1
+        let brie = new AgedBrie(item.name, item.sellIn, item.quality)
+        brie.updateQuality()
+
+        item.quality = brie.quality
       }
 
       else if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
-        if (item.sellIn < 0) { item.quality = 0; return }
+        let passes = new BackstagePass(item.name, item.sellIn, item.quality)
+        passes.updateQuality()
 
-        item.quality += 1
-        if (item.sellIn < 10) { item.quality += 1 }
-        if (item.sellIn < 5) { item.quality += 1 }
+        item.quality = passes.quality
       }
 
       else {
-        item.sellIn < 0 ? item.quality -= 2 : item.quality -= 1
-        if (item.quality < 0) { item.quality = 0 }
-      }
+        let regular = new Regular(item.name, item.sellIn, item.quality)
+        regular.updateQuality()
 
-      if (item.quality > 50) { item.quality = 50 }
+        item.quality = regular.quality
+      }
     })
 
     return this.items
