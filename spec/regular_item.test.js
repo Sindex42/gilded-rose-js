@@ -1,8 +1,8 @@
 const Regular = require('../src/regular_item')
 
 describe('Regular Item', () => {
-  let regular1 = new Regular(0, 20)
-  let regular2 = new Regular(-1, 20)
+  let regular1 = new Regular("Sword", 0, 20)
+  let regular2 = new Regular("Sword", -1, 20)
 
   describe('#updateQuality', () => {
     test('if sellIn >= 0, decrement quality by 1', () => {

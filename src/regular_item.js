@@ -1,7 +1,8 @@
-class Regular {
-  constructor (sellIn, quality) {
-    this.sellIn = sellIn
-    this.quality = quality
+const Item = require('../src/item')
+
+class Regular extends Item {
+  constructor (name, sellIn, quality) {
+    super(name, sellIn, quality)
   }
 
   updateQuality () {
