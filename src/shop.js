@@ -12,7 +12,7 @@ class Shop {
     item.sellIn -= 1
   }
 
-  updateQuality () {
+  advanceDay () {
     this.items.forEach((item) => {
       let newItem
       if (item.name === 'Sulfuras, Hand of Ragnaros') { return }

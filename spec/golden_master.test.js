@@ -28,7 +28,7 @@ describe('Golden master test', () => {
         log += `${item.name}, ${item.sellIn}, ${item.quality}\n`
       })
 
-      gildedRose.updateQuality()
+      gildedRose.advanceDay()
     }
 
     expect(log).toBe(master)

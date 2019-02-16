@@ -29,7 +29,7 @@ describe('Shop', () => {
     })
   })
 
-  describe('#updateQuality', () => {
+  describe('#advanceDay', () => {
     describe('sellIn is greater than 0', () => {
       let items = [
         {name: "Sword", sellIn: 1, quality: 20},
@@ -41,7 +41,7 @@ describe('Shop', () => {
       ]
 
       let gildedRose = new Shop(items)
-      gildedRose.updateQuality()
+      gildedRose.advanceDay()
 
       test('Regular items decrement quality by 1', () => {
         expect(gildedRose.items[0].quality).toBe(19)
@@ -78,7 +78,7 @@ describe('Shop', () => {
       ]
 
       let gildedRose = new Shop(items)
-      gildedRose.updateQuality()
+      gildedRose.advanceDay()
 
       test('Regular items decrement quality by 2', () => {
         expect(gildedRose.items[0].quality).toBe(18)
@@ -108,7 +108,7 @@ describe('Shop', () => {
       ]
 
       let gildedRose = new Shop(items)
-      gildedRose.updateQuality()
+      gildedRose.advanceDay()
 
       test('Aged Brie', () => {
         expect(gildedRose.items[0].quality).toBe(50)
@@ -126,7 +126,7 @@ describe('Shop', () => {
       ]
 
       let gildedRose = new Shop(items)
-      gildedRose.updateQuality()
+      gildedRose.advanceDay()
 
       test('Regular items', () => {
         expect(gildedRose.items[0].quality).toBe(0)
