@@ -1,13 +1,35 @@
+# Gilded Rose Refactoring Kata
 
-# Gilded Rose Requirements Specification
+## Getting started
 
+1. Clone this repo `git clone git@github.com:Sindex42/gilded-rose-js.git`
+2. Change directory `gilded-rose-js`
+3. Run npm to install dependencies `npm install`
 
-Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
-prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
-Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We
-have a system in place that updates our inventory for us. It was developed by a no-nonsense type named
-Leeroy, who has moved on to new adventures. Your task is to add the new feature to our system so that
-we can begin selling a new category of items. First an introduction to our system:
+### Testing 
+
+1. Run tests with Jest `npm run test`
+
+## Approach
+
+- Created a text test as per the suggestions in the [original repository](https://github.com/emilybache/GildedRose-Refactoring-Kata#text-based-approval-testing). With this in place I could be sure that I didn't change any of the original functionality 
+
+- Wrote separate unit tests for the individual items and circumstances
+
+- Made a flowchart to solidify my understanding of the flow of data through the program before starting
+
+![Imgur](https://i.imgur.com/fADl9Z5.png)
+
+- Refactoring
+  - Made the iterator return early for Sulfuras as it is a legendary item that does not change
+  - Simplified the nested if statements 
+  - Created classes for each category of item that inherits from the Item class
+  - Integrated the classes back into the updateQuality function
+  - Removed magic numbers and added a module to hold th constants
+
+## Original Specifications
+
+Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. It was developed by a no-nonsense type named Leeroy, who has moved on to new adventures. Your task is to add the new feature to our system so that we can begin selling a new category of items. First an introduction to our system:
 
 	- All items have a SellIn value which denotes the number of days we have to sell the item
 	- All items have a Quality value which denotes how valuable the item is
