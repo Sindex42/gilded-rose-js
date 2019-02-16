@@ -25,7 +25,13 @@
   - Simplified the nested if statements 
   - Created classes for each category of item that inherits from the Item class
   - Integrated the classes back into the updateQuality function
-  - Removed magic numbers and added a module to hold th constants
+  - Removed magic numbers and added a module to hold the constants
+  - Added a Conjured item as an update to the system
+  
+### Reflections
+
+- advanceDay function needs further refactoring as it is too long
+- creating new items could be changed into a more generic function 
 
 ## Original Specifications
 
