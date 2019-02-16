@@ -9,29 +9,24 @@ class Shop {
 
   updateQuality () {
     this.items.forEach((item) => {
+      let newitem
       if (item.name === 'Sulfuras, Hand of Ragnaros') { return }
-      item.sellIn = item.sellIn - 1
+      item.sellIn -= 1
 
       if (item.name === 'Aged Brie') {
-        let brie = new AgedBrie(item.name, item.sellIn, item.quality)
-        brie.updateQuality()
-
-        item.quality = brie.quality
+        newitem = new AgedBrie(item.name, item.sellIn, item.quality)
       }
 
       else if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
-        let passes = new BackstagePass(item.name, item.sellIn, item.quality)
-        passes.updateQuality()
-
-        item.quality = passes.quality
+        newitem = new BackstagePass(item.name, item.sellIn, item.quality)
       }
 
       else {
-        let regular = new Regular(item.name, item.sellIn, item.quality)
-        regular.updateQuality()
-
-        item.quality = regular.quality
+        newitem = new Regular(item.name, item.sellIn, item.quality)
       }
+
+      newitem.updateQuality()
+      item.quality = newitem.quality
     })
 
     return this.items
