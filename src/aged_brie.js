@@ -1,5 +1,5 @@
-const Item = require('../src/item')
-const MAX_QUALITY = 50
+const Item = require('./item')
+const { MAX_QUALITY } = require('./constants')
 
 class AgedBrie extends Item {
   constructor (name, sellIn, quality) {

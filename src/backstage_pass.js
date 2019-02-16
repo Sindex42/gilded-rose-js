@@ -1,7 +1,5 @@
-const Item = require('../src/item')
-const MAX_QUALITY = 50
-const DOUBLE_VALUE = 10
-const TRIPLE_VALUE = 5
+const Item = require('./item')
+const { MAX_QUALITY, DOUBLE_VALUE, TRIPLE_VALUE } = require('./constants')
 
 class BackstagePass extends Item {
   constructor (name, sellIn, quality) {
