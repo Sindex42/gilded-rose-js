@@ -1,7 +1,7 @@
 const AgedBrie = require('../src/aged_brie')
 const BackstagePass = require('../src/backstage_pass')
 const Regular = require('../src/regular_item')
-const { specialItems } = require('./constants')
+const { specialItems, legendaryItems } = require('./constants')
 
 class Shop {
   constructor (items = []) {
@@ -14,10 +14,10 @@ class Shop {
 
   advanceDay () {
     this.items.forEach((item) => {
-      let newItem
-      if (item.name === 'Sulfuras, Hand of Ragnaros') { return }
+      if (this._isLegendary(item)) { return }
       this.updateSellIn(item)
 
+      let newItem
       if (item.name === 'Aged Brie') {
         newItem = new AgedBrie(item.name, item.sellIn, item.quality)
       }
@@ -35,6 +35,10 @@ class Shop {
     })
 
     return this.items
+  }
+
+  _isLegendary (item) {
+    if (legendaryItems.includes(item.name)) { return true }
   }
 }
 

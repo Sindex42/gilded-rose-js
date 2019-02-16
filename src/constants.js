@@ -8,10 +8,15 @@ const specialItems = [
   'Backstage passes to a TAFKAL80ETC concert'
 ]
 
+const legendaryItems = [
+  'Sulfuras, Hand of Ragnaros'
+]
+
 module.exports = {
   MAX_QUALITY,
   MIN_QUALITY,
   DOUBLE_VALUE,
   TRIPLE_VALUE,
-  specialItems
+  specialItems,
+  legendaryItems
 }
