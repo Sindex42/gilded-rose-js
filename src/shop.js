@@ -1,6 +1,7 @@
-const AgedBrie = require('../src/aged_brie')
-const BackstagePass = require('../src/backstage_pass')
-const Regular = require('../src/regular_item')
+const AgedBrie = require('./aged_brie')
+const BackstagePass = require('./backstage_pass')
+const Conjured = require('./conjured_item')
+const Regular = require('./regular_item')
 const { specialItems, legendaryItems } = require('./constants')
 
 class Shop {
@@ -24,6 +25,10 @@ class Shop {
 
       else if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
         newItem = new BackstagePass(item.name, item.sellIn, item.quality)
+      }
+
+      else if (item.name.includes('Conjured')) {
+        newItem = new Conjured(item.name, item.sellIn, item.quality)
       }
 
       else {
