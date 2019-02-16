@@ -6,35 +6,30 @@ describe('Shop', () => {
     expect(gildedRose.items).toEqual([])
   })
 
-  describe('#updateQuality', () => {
-    describe('sellIn', () => {
-      let items = [
-        {name: "Sword", sellIn: 1, quality: 20},
-        {name: "Aged Brie", sellIn: 0, quality: 20},
-        {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80},
-        {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20}
-      ]
+  describe('#updateSellIn', () => {
+    let sword = {name: "Sword", sellIn: 1}
+    let brie = {name: "Aged Brie", sellIn: 0}
+    let passes = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15}
 
-      let gildedRose = new Shop(items)
-      gildedRose.updateQuality()
+    let gildedRose = new Shop()
 
-      test('Regular items decrement by 1', () => {
-        expect(gildedRose.items[0].sellIn).toBe(0)
-      })
-
-      test('Aged Brie decrements by 1', () => {
-        expect(gildedRose.items[1].sellIn).toBe(-1)
-      })
-
-      test("Sulfuras does not change", () => {
-        expect(gildedRose.items[2].sellIn).toBe(0)
-      })
-
-      test('Backstage Passes decrement by 1', () => {
-        expect(gildedRose.items[3].sellIn).toBe(14)
-      })
+    test('Regular items decrement by 1', () => {
+      gildedRose.updateSellIn(sword)
+      expect(sword.sellIn).toBe(0)
     })
 
+    test('Aged Brie decrements by 1', () => {
+      gildedRose.updateSellIn(brie)
+      expect(brie.sellIn).toBe(-1)
+    })
+
+    test('Backstage Passes decrement by 1', () => {
+      gildedRose.updateSellIn(passes)
+      expect(passes.sellIn).toBe(14)
+    })
+  })
+
+  describe('#updateQuality', () => {
     describe('sellIn is greater than 0', () => {
       let items = [
         {name: "Sword", sellIn: 1, quality: 20},

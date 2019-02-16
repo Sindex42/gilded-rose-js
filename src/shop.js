@@ -1,32 +1,37 @@
 const AgedBrie = require('../src/aged_brie')
 const BackstagePass = require('../src/backstage_pass')
 const Regular = require('../src/regular_item')
+const { specialItems } = require('./constants')
 
 class Shop {
   constructor (items = []) {
     this.items = items
   }
 
+  updateSellIn (item) {
+    item.sellIn -= 1
+  }
+
   updateQuality () {
     this.items.forEach((item) => {
-      let newitem
+      let newItem
       if (item.name === 'Sulfuras, Hand of Ragnaros') { return }
-      item.sellIn -= 1
+      this.updateSellIn(item)
 
       if (item.name === 'Aged Brie') {
-        newitem = new AgedBrie(item.name, item.sellIn, item.quality)
+        newItem = new AgedBrie(item.name, item.sellIn, item.quality)
       }
 
       else if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
-        newitem = new BackstagePass(item.name, item.sellIn, item.quality)
+        newItem = new BackstagePass(item.name, item.sellIn, item.quality)
       }
 
       else {
-        newitem = new Regular(item.name, item.sellIn, item.quality)
+        newItem = new Regular(item.name, item.sellIn, item.quality)
       }
 
-      newitem.updateQuality()
-      item.quality = newitem.quality
+      newItem.updateQuality()
+      item.quality = newItem.quality
     })
 
     return this.items
