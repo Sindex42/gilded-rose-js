@@ -27,11 +27,8 @@
   - Integrated the classes back into the updateQuality function
   - Removed magic numbers and added a module to hold the constants
   - Modified NonUnique items to handle conjured items as an update to the system
-
-### Reflections
-
-- advanceDay function needs further refactoring as it is too long
-- creating new items could be changed into a more generic function
+  - Created a function that converts items into special or non special items
+  - Split advanceDay into smaller functions
 
 ## Original Specifications
 
