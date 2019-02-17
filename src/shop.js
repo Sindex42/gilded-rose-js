@@ -1,5 +1,4 @@
-const Conjured = require('./conjured_item')
-const Regular = require('./regular_item')
+const NonUnique = require('./non_unique')
 const { specialItems, legendaryItems } = require('./item_groups')
 
 class Shop {
@@ -21,12 +20,8 @@ class Shop {
         newItem = new specialItems[item.name](item.name, item.sellIn, item.quality)
       }
 
-      else if (item.name.includes('Conjured')) {
-        newItem = new Conjured(item.name, item.sellIn, item.quality)
-      }
-
       else {
-        newItem = new Regular(item.name, item.sellIn, item.quality)
+        newItem = new NonUnique(item.name, item.sellIn, item.quality)
       }
 
       newItem.updateQuality()

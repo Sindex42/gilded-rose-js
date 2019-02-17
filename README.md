@@ -6,13 +6,13 @@
 2. Change directory `gilded-rose-js`
 3. Run npm to install dependencies `npm install`
 
-### Testing 
+### Testing
 
 1. Run tests with Jest `npm run test`
 
 ## Approach
 
-- Created a text test as per the suggestions in the [original repository](https://github.com/emilybache/GildedRose-Refactoring-Kata#text-based-approval-testing). With this in place I could be sure that I didn't change any of the original functionality 
+- Created a text test as per the suggestions in the [original repository](https://github.com/emilybache/GildedRose-Refactoring-Kata#text-based-approval-testing). With this in place I could be sure that I didn't change any of the original functionality
 
 - Wrote separate unit tests for the individual items and circumstances
 
@@ -22,16 +22,16 @@
 
 - Refactoring
   - Made the iterator return early for Sulfuras as it is a legendary item that does not change
-  - Simplified the nested if statements 
+  - Simplified the nested if statements
   - Created classes for each category of item that inherits from the Item class
   - Integrated the classes back into the updateQuality function
   - Removed magic numbers and added a module to hold the constants
-  - Added a Conjured item as an update to the system
-  
+  - Modified NonUnique items to handle conjured items as an update to the system
+
 ### Reflections
 
 - advanceDay function needs further refactoring as it is too long
-- creating new items could be changed into a more generic function 
+- creating new items could be changed into a more generic function
 
 ## Original Specifications
 
