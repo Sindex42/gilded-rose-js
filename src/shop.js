@@ -1,8 +1,6 @@
-const AgedBrie = require('./aged_brie')
-const BackstagePass = require('./backstage_pass')
 const Conjured = require('./conjured_item')
 const Regular = require('./regular_item')
-const { specialItems, legendaryItems } = require('./constants')
+const { specialItems, legendaryItems } = require('./item_groups')
 
 class Shop {
   constructor (items = []) {
@@ -19,12 +17,8 @@ class Shop {
       this.updateSellIn(item)
 
       let newItem
-      if (item.name === 'Aged Brie') {
-        newItem = new AgedBrie(item.name, item.sellIn, item.quality)
-      }
-
-      else if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
-        newItem = new BackstagePass(item.name, item.sellIn, item.quality)
+      if (item.name in specialItems) {
+        newItem = new specialItems[item.name](item.name, item.sellIn, item.quality)
       }
 
       else if (item.name.includes('Conjured')) {
