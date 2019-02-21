@@ -20,7 +20,7 @@
 
 ![Imgur](https://i.imgur.com/fADl9Z5.png)
 
-- Refactoring
+### Refactoring
   - Made the iterator return early for Sulfuras as it is a legendary item that does not change
   - Simplified the nested if statements
   - Created classes for each category of item that inherits from the Item class
