@@ -1,11 +1,7 @@
 const MAX_QUALITY = 50
 const MIN_QUALITY = 0
-const DOUBLE_VALUE = 10
-const TRIPLE_VALUE = 5
 
 module.exports = {
   MAX_QUALITY,
-  MIN_QUALITY,
-  DOUBLE_VALUE,
-  TRIPLE_VALUE
+  MIN_QUALITY
 }
