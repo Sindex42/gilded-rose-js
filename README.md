@@ -1,4 +1,5 @@
 # Gilded Rose Refactoring Kata
+[![Maintainability](https://api.codeclimate.com/v1/badges/87660394a61216e8705b/maintainability)](https://codeclimate.com/github/Sindex42/gilded-rose-js/maintainability)
 
 My interpretation of the [Gilded Rose refactoring kata](https://github.com/emilybache/GildedRose-Refactoring-Kata).
 
