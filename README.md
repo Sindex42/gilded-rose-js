@@ -1,5 +1,9 @@
 # Gilded Rose Refactoring Kata
 
+My interpretation of the [Gilded Rose refactoring kata](https://github.com/emilybache/GildedRose-Refactoring-Kata).
+
+![Imgur](http://i.imgur.com/zWP8UPe.png)
+
 ## Getting started
 
 1. Clone this repo `git clone git@github.com:Sindex42/gilded-rose-js.git`
@@ -12,7 +16,7 @@
 
 ## Approach
 
-- Created a text test as per the suggestions in the [original repository](https://github.com/emilybache/GildedRose-Refactoring-Kata#text-based-approval-testing). With this in place I could be sure that I didn't change any of the original functionality
+- Created a text test as per the [suggestions](https://github.com/emilybache/GildedRose-Refactoring-Kata#text-based-approval-testing) in the original repository. With this in place I could be sure that I didn't change any of the original functionality
 
 - Wrote separate unit tests for the individual items and circumstances
 
@@ -20,7 +24,9 @@
 
 ![Imgur](https://i.imgur.com/fADl9Z5.png)
 
+
 ### Refactoring
+
   - Made the iterator return early for Sulfuras as it is a legendary item that does not change
   - Simplified the nested if statements
   - Created classes for each category of item that inherits from the Item class
@@ -29,6 +35,7 @@
   - Modified NonUnique items to handle conjured items as an update to the system
   - Created a function that converts items into special or non special items
   - Split advanceDay into smaller functions
+
 
 ## Original Specifications
 
